@@ -1,2 +1,1 @@
-# flask-sqlalchemy-marshmallow-trainning
-FLASK + SQLALCHEMY + MARSHMALLOW
+# FLASK + SQLALCHEMY + MARSHMALLOW
