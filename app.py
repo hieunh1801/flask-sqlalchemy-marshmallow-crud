@@ -28,7 +28,7 @@ def users():
     if method == "GET":
         page_size = request.args.get("page_size")
         page_number = request.args.get("page_number")
-        list_user, total = UserCRUD.get_all(
+        list_user, total = UserCRUD().get_all(
             page_size=page_size, page_number=page_number)
         return jsonify({"data": list_user, "total": total})
     if method == "POST":
@@ -40,7 +40,7 @@ def users():
             time_format = "%Y-%m-%d"
             payload["date_of_bird"] = datetime.datetime.strptime(
                 date_of_bird, time_format)
-        user = UserCRUD.create(payload)
+        user = UserCRUD().create(payload)
         return jsonify(user)
 
 
@@ -48,7 +48,7 @@ def users():
 def user(user_id):
     method = request.method
     if method == "GET":
-        user = UserCRUD.get_by_id(user_id)
+        user = UserCRUD().get_by_id(user_id)
         return jsonify(user)
     if method == "PUT":
         payload = {}
@@ -59,10 +59,10 @@ def user(user_id):
             time_format = "%Y-%m-%d"
             payload["date_of_bird"] = datetime.datetime.strptime(
                 date_of_bird, time_format)
-        user = UserCRUD.update(user_id, payload)
+        user = UserCRUD().update(user_id, payload)
         return jsonify(user)
     if method == "DELETE":
-        user = UserCRUD.delete(user_id)
+        user = UserCRUD().delete(user_id)
         print("delete user", user)
         return jsonify(user)
 
